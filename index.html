@@ -1,28 +1,78 @@
-<style>
-    .button-container {
-        display: flex;
-        flex-direction: column; /* 세로 정렬 */
-        align-items: center; /* 중앙 정렬 */
-    }
-    button {
-        width: 200px;
-        margin: 10px 0; /* 버튼 사이 간격 */
-        padding: 10px 15px;
-        font-size: 16px;
-        background-color: #4285F4;
-        color: white;
-        border: none;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-    button:hover {
-        background-color: #357ae8;
-    }
-</style>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>중앙 정렬된 버튼</title>
+    <style>
+        /* 전체 화면 중앙 정렬 */
+        body {
+            display: flex;
+            justify-content: center;  /* 수평 가운데 정렬 */
+            align-items: center;  /* 수직 가운데 정렬 */
+            height: 100vh;  /* 전체 화면 높이 */
+            margin: 0;  /* 기본 마진 제거 */
+            background-color: #f4f4f4;  /* 배경색 */
+        }
 
-<div class="button-container">
-    <button onclick="openPopup('https://script.google.com/macros/s/AKfycbwhO1oHLQBOrECEPjFep72ZlhorzoFWPLUTYw9IyvhuwFiCZ6Fj4wCWfGZbYpl0TSr8zg/exec')">현미진 선생님 출석부</button>
-    <button onclick="openPopup('https://www.notion.so/')">노션 페이지 열기</button>
-    <button onclick="openPopup('https://www.youtube.com/')">유튜브 열기</button>
-    <button onclick="openPopup('https://yourwebsite.com/custom-page')">커스텀 웹페이지 열기</button>
-</div>
+        /* 버튼 컨테이너 (세로 정렬) */
+        .button-container {
+            display: flex;
+            flex-direction: column;  /* 세로 정렬 */
+            align-items: center;  /* 버튼 중앙 정렬 */
+            gap: 15px;  /* 버튼 간격 */
+        }
+
+        /* 버튼 스타일 */
+        button {
+            width: 220px;
+            padding: 12px 20px;
+            font-size: 18px;
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        /* 버튼 호버 효과 */
+        button:hover {
+            background-color: #357ae8;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="button-container">
+        <button onclick="openPopup('https://script.google.com/macros/s/AKfycbwhO1oHLQBOrECEPjFep72ZlhorzoFWPLUTYw9IyvhuwFiCZ6Fj4wCWfGZbYpl0TSr8zg/exec')">
+        현미진 선생님 출석부
+        </button>
+
+        <button onclick="openPopup('https://www.notion.so/')">
+            노션 페이지 열기
+        </button>
+
+        <button onclick="openPopup('https://www.youtube.com/')">
+            유튜브 열기
+        </button>
+
+        <button onclick="openPopup('https://yourwebsite.com/custom-page')">
+            커스텀 웹페이지 열기
+        </button>
+    </div>
+
+    <script>
+        function openPopup(url) {
+            window.open(
+                url, 
+                '_blank', 
+                'width=1200,height=800,scrollbars=yes,resizable=yes'
+            );
+        }
+    </script>
+
+</body>
+</html>
