@@ -1,59 +1,29 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>출석부 리스트</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
-        button {
-            padding: 10px 15px;
-            font-size: 16px;
-            margin: 10px;
-            background-color: #4285F4;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #357ae8;
-        }
-    </style>
-</head>
-<body>
+<style>
+    .button-container {
+        display: flex;
+        flex-direction: column; /* 세로 정렬 */
+        align-items: center; /* 중앙 정렬 */
+    }
+    button {
+        width: 200px;
+        margin: 10px 0; /* 버튼 사이 간격 */
+        padding: 10px 15px;
+        font-size: 16px;
+        background-color: #4285F4;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    button:hover {
+        background-color: #357ae8;
+    }
+</style>
 
-    <h2>출석부 리스트</h2>
-
+<div class="button-container">
     <button onclick="openPopup('https://script.google.com/macros/s/AKfycbwhO1oHLQBOrECEPjFep72ZlhorzoFWPLUTYw9IyvhuwFiCZ6Fj4wCWfGZbYpl0TSr8zg/exec')">
-        현미진 선생님 출석부
-    </button>
-
-    <button onclick="openPopup('https://www.notion.so/')">
-        노션 페이지 열기
-    </button>
-
-    <button onclick="openPopup('https://www.youtube.com/')">
-        유튜브 열기
-    </button>
-
-    <button onclick="openPopup('https://yourwebsite.com/custom-page')">
-        커스텀 웹페이지 열기
-    </button>
-
-    <script>
-        function openPopup(url) {
-            window.open(
-                url, 
-                '_blank', 
-                'width=1200,height=800,scrollbars=yes,resizable=yes'
-            );
-        }
-    </script>
-
-</body>
-</html>
+        현미진 선생님 출석부</button>
+    <button onclick="openPopup('https://www.notion.so/')">노션 페이지 열기</button>
+    <button onclick="openPopup('https://www.youtube.com/')">유튜브 열기</button>
+    <button onclick="openPopup('https://yourwebsite.com/custom-page')">커스텀 웹페이지 열기</button>
+</div>
