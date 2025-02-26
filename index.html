@@ -1,78 +1,96 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
+<html>
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>중앙 정렬된 버튼</title>
+    <title>선생님별 출석부</title>
     <style>
-        /* 전체 화면 중앙 정렬 */
-        body {
-            display: flex;
-            justify-content: center;  /* 수평 가운데 정렬 */
-            align-items: center;  /* 수직 가운데 정렬 */
-            height: 100vh;  /* 전체 화면 높이 */
-            margin: 0;  /* 기본 마진 제거 */
-            background-color: #f4f4f4;  /* 배경색 */
-        }
-
-        /* 버튼 컨테이너 (세로 정렬) */
-        .button-container {
-            display: flex;
-            flex-direction: column;  /* 세로 정렬 */
-            align-items: center;  /* 버튼 중앙 정렬 */
-            gap: 15px;  /* 버튼 간격 */
-        }
-
-        /* 버튼 스타일 */
-        button {
-            width: 220px;
-            padding: 12px 20px;
-            font-size: 18px;
-            background-color: #4285F4;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 8px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-            transition: 0.3s;
-        }
-
-        /* 버튼 호버 효과 */
-        button:hover {
-            background-color: #357ae8;
-            transform: scale(1.05);
-        }
+      /* 버튼들을 담는 컨테이너 중앙 정렬 */
+      .button-container {
+        text-align: center;
+        margin-top: 50px;
+      }
+      /* 버튼 스타일 */
+      .open-button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      /* 전체 창을 덮는 오버레이 */
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        display: none; /* 기본은 숨김 */
+        z-index: 1000;
+      }
+      /* 모달 창을 전체 창 크기로 설정 */
+      .modal {
+        width: 100vw;
+        height: 100vh;
+        background: #fff;
+        position: relative;
+        overflow: auto;
+      }
+      /* 닫기 버튼 */
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 28px;
+        font-weight: bold;
+        color: #aaa;
+        cursor: pointer;
+        z-index: 1001;
+      }
+      .close-btn:hover {
+        color: #000;
+      }
+      /* iframe이 전체 크기를 채우도록 설정 */
+      .modal iframe {
+        border: none;
+        width: 100%;
+        height: 100%;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
+    <!-- 중앙 정렬된 버튼 컨테이너 -->
     <div class="button-container">
-        <button onclick="openPopup('https://script.google.com/macros/s/AKfycbwhO1oHLQBOrECEPjFep72ZlhorzoFWPLUTYw9IyvhuwFiCZ6Fj4wCWfGZbYpl0TSr8zg/exec')">
-        현미진 선생님 출석부
-        </button>
-
-        <button onclick="openPopup('https://www.notion.so/')">
-            노션 페이지 열기
-        </button>
-
-        <button onclick="openPopup('https://www.youtube.com/')">
-            유튜브 열기
-        </button>
-
-        <button onclick="openPopup('https://yourwebsite.com/custom-page')">
-            커스텀 웹페이지 열기
-        </button>
+      <button class="open-button" onclick="openOverlay('overlay1')">오버레이 1 열기</button>
+      <button class="open-button" onclick="openOverlay('overlay2')">오버레이 2 열기</button>
     </div>
-
+    
+    <!-- 오버레이 1 -->
+    <div class="overlay" id="overlay1">
+      <div class="modal">
+        <span class="close-btn" onclick="closeOverlay('overlay1')">&times;</span>
+        <!-- 오버레이 1에 표시할 콘텐츠(예: iframe) -->
+        <iframe src="https://script.google.com/macros/s/AKfycbycN5sk28iYhnbI9IHEyUo1ibDog0idzoh4BehgG32Hiq6Zl4ksfsaVWaDGHla8z-4s9g/exec?source=notion"></iframe>
+      </div>
+    </div>
+    
+    <!-- 오버레이 2 -->
+    <div class="overlay" id="overlay2">
+      <div class="modal">
+        <span class="close-btn" onclick="closeOverlay('overlay2')">&times;</span>
+        <!-- 오버레이 2에 표시할 다른 콘텐츠(또는 같은 콘텐츠) -->
+        <iframe src="https://script.google.com/macros/s/AKfycbycN5sk28iYhnbI9IHEyUo1ibDog0idzoh4BehgG32Hiq6Zl4ksfsaVWaDGHla8z-4s9g/exec?source=notion"></iframe>
+      </div>
+    </div>
+    
     <script>
-        function openPopup(url) {
-            window.open(
-                url, 
-                '_blank', 
-                'width=1200,height=800,scrollbars=yes,resizable=yes'
-            );
-        }
+      // 인자로 전달된 오버레이 id에 해당하는 오버레이를 보이도록 함
+      function openOverlay(id) {
+        document.getElementById(id).style.display = "block";
+      }
+      // 인자로 전달된 오버레이 id에 해당하는 오버레이를 숨김 처리
+      function closeOverlay(id) {
+        document.getElementById(id).style.display = "none";
+      }
     </script>
-
-</body>
+  </body>
 </html>
