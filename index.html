@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>선생님별 출석부</title>
+    <title>여러 오버레이와 중앙 정렬 버튼 예제</title>
     <style>
       /* 버튼들을 담는 컨테이너 중앙 정렬 */
       .button-container {
@@ -83,8 +83,12 @@
     </div>
     
     <script>
-      // 인자로 전달된 오버레이 id에 해당하는 오버레이를 보이도록 함
+      // 오버레이를 열기 전에 referrer(이전 페이지)가 Notion인지 확인합니다.
       function openOverlay(id) {
+        if (document.referrer.indexOf("notion.so") === -1) {
+          alert("이 페이지는 Notion에서 넘어와야만 오버레이가 작동합니다.");
+          return;
+        }
         document.getElementById(id).style.display = "block";
       }
       // 인자로 전달된 오버레이 id에 해당하는 오버레이를 숨김 처리
