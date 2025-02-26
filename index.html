@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>구글 스프레드시트 팝업</title>
+    <title>여러 개의 팝업 버튼</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,8 +11,9 @@
             margin-top: 50px;
         }
         button {
-            padding: 10px 20px;
-            font-size: 18px;
+            padding: 10px 15px;
+            font-size: 16px;
+            margin: 10px;
             background-color: #4285F4;
             color: white;
             border: none;
@@ -26,14 +27,29 @@
 </head>
 <body>
 
-    <h2>구글 스프레드시트를 새 창에서 열기</h2>
-    <button onclick="openGoogleSheet()">새 창으로 열기</button>
+    <h2>여러 개의 팝업 버튼</h2>
+
+    <button onclick="openPopup('https://script.google.com/macros/s/AKfycbwhO1oHLQBOrECEPjFep72ZlhorzoFWPLUTYw9IyvhuwFiCZ6Fj4wCWfGZbYpl0TSr8zg/exec')">
+        구글 스프레드시트 열기
+    </button>
+
+    <button onclick="openPopup('https://www.notion.so/')">
+        노션 페이지 열기
+    </button>
+
+    <button onclick="openPopup('https://www.youtube.com/')">
+        유튜브 열기
+    </button>
+
+    <button onclick="openPopup('https://yourwebsite.com/custom-page')">
+        커스텀 웹페이지 열기
+    </button>
 
     <script>
-        function openGoogleSheet() {
+        function openPopup(url) {
             window.open(
-                'https://script.google.com/macros/s/AKfycbwhO1oHLQBOrECEPjFep72ZlhorzoFWPLUTYw9IyvhuwFiCZ6Fj4wCWfGZbYpl0TSr8zg/exec', 
-                'popup', 
+                url, 
+                '_blank', 
                 'width=1200,height=800,scrollbars=yes,resizable=yes'
             );
         }
