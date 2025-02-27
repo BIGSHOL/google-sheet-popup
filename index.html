@@ -75,13 +75,13 @@
 
   <div class="button-container">
     <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1zIyzD-YbMRO3BnS4eIBFA_fTvzvJH694KeJ0Jx5IzYg/edit?usp=sharing')">
-      스프레드시트 1 열기
+      현미진 선생님 출석부
     </button>
     <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1AbCdEfGHIJklMNOpQRsTUvwXYZ/edit?usp=sharing')">
-      스프레드시트 2 열기
+      A 선생님 출석부
     </button>
     <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1XyZAbCDefGHIJKLmNOPQRSTuvWX/edit?usp=sharing')">
-      스프레드시트 3 열기
+      B 선생님 출석부
     </button>
   </div>
 
@@ -98,7 +98,7 @@
         return true;
       } else {
         // 기존 창에서 실행되었을 경우 차단 메시지 표시
-        document.body.innerHTML = "<h2 style='color: red; text-align: center;'>🚫 접근이 제한되었습니다.</h2><p style='text-align: center;'>이 페이지는 새 탭에서만 열 수 있습니다.</p>";
+        document.body.innerHTML = "<h2 style='color: red; text-align: center;'>🚫 접근이 제한되었습니다.</h2><p style='text-align: center;'>바른 경로에서 실행해주세요.</p>";
         return false;
       }
     }
