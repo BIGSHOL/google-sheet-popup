@@ -87,21 +87,21 @@
 
   <div id="overlay">
     <button class="close-btn" onclick="closeOverlay()">✖</button>
-    <iframe id="sheetFrame" sandbox="allow-scripts"></iframe>
+    <iframe id="sheetFrame"></iframe>
   </div>
 
   <script>
-    // 새 창에서만 동작하도록 제한
-    function checkIfOpenedInNewTab() {
-      if (window.opener === null) {
-        document.body.innerHTML = "<h2 style='color: red; text-align: center;'>🚫 접근이 제한되었습니다.</h2><p style='text-align: center;'>이 페이지는 새 창에서만 열 수 있습니다.</p>";
+    // 팝업창(새 창)에서만 실행되도록 제한
+    function checkIfOpenedInPopup() {
+      if (!window.opener) { // 새 창이 아닐 경우
+        document.body.innerHTML = "<h2 style='color: red; text-align: center;'>🚫 접근이 제한되었습니다.</h2><p style='text-align: center;'>이 페이지는 팝업 창에서만 열 수 있습니다.</p>";
         return false;
       }
       return true;
     }
 
     function openOverlay(sheetUrl) {
-      if (checkIfOpenedInNewTab()) {
+      if (checkIfOpenedInPopup()) {
         document.getElementById("sheetFrame").src = sheetUrl;
         document.getElementById("overlay").style.display = "flex";
       }
@@ -111,8 +111,8 @@
       document.getElementById("overlay").style.display = "none";
     }
 
-    // 페이지 로드 시 새 창인지 확인
-    window.onload = checkIfOpenedInNewTab;
+    // 페이지 로드 시 팝업창 여부 확인
+    window.onload = checkIfOpenedInPopup;
   </script>
 
 </body>
