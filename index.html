@@ -91,17 +91,20 @@
   </div>
 
   <script>
-    // 팝업창(새 창)에서만 실행되도록 제한
-    function checkIfOpenedInPopup() {
-      if (!window.opener) { // 새 창이 아닐 경우
-        document.body.innerHTML = "<h2 style='color: red; text-align: center;'>🚫 접근이 제한되었습니다.</h2><p style='text-align: center;'>이 페이지는 팝업 창에서만 열 수 있습니다.</p>";
+    // 새 탭에서만 실행되도록 제한하는 함수
+    function checkIfOpenedInNewTab() {
+      // 새 창 또는 새 탭이면 허용
+      if (window.opener === null && window.innerWidth === screen.width) {
+        return true;
+      } else {
+        // 기존 창에서 실행되었을 경우 차단 메시지 표시
+        document.body.innerHTML = "<h2 style='color: red; text-align: center;'>🚫 접근이 제한되었습니다.</h2><p style='text-align: center;'>이 페이지는 새 탭에서만 열 수 있습니다.</p>";
         return false;
       }
-      return true;
     }
 
     function openOverlay(sheetUrl) {
-      if (checkIfOpenedInPopup()) {
+      if (checkIfOpenedInNewTab()) {
         document.getElementById("sheetFrame").src = sheetUrl;
         document.getElementById("overlay").style.display = "flex";
       }
@@ -111,8 +114,8 @@
       document.getElementById("overlay").style.display = "none";
     }
 
-    // 페이지 로드 시 팝업창 여부 확인
-    window.onload = checkIfOpenedInPopup;
+    // 페이지가 로드될 때 새 탭에서 실행되었는지 확인
+    window.onload = checkIfOpenedInNewTab;
   </script>
 
 </body>
