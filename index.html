@@ -91,20 +91,17 @@
   </div>
 
   <script>
-    // 노션에서만 접속 가능하도록 제한
-    function checkReferer() {
-      let allowedReferrer = "notion.so";
-      let referrer = document.referrer;
-
-      if (!referrer.includes(allowedReferrer)) {
-        document.body.innerHTML = "<h2 style='color: red; text-align: center;'>🚫 접근이 제한되었습니다.</h2><p style='text-align: center;'>이 페이지는 노션에서만 사용할 수 있습니다.</p>";
+    // 새 창에서만 동작하도록 제한
+    function checkIfOpenedInNewTab() {
+      if (window.opener === null) {
+        document.body.innerHTML = "<h2 style='color: red; text-align: center;'>🚫 접근이 제한되었습니다.</h2><p style='text-align: center;'>이 페이지는 새 창에서만 열 수 있습니다.</p>";
         return false;
       }
       return true;
     }
 
     function openOverlay(sheetUrl) {
-      if (checkReferer()) {
+      if (checkIfOpenedInNewTab()) {
         document.getElementById("sheetFrame").src = sheetUrl;
         document.getElementById("overlay").style.display = "flex";
       }
@@ -114,8 +111,8 @@
       document.getElementById("overlay").style.display = "none";
     }
 
-    // 페이지가 로드될 때 자동으로 확인
-    window.onload = checkReferer;
+    // 페이지 로드 시 새 창인지 확인
+    window.onload = checkIfOpenedInNewTab;
   </script>
 
 </body>
