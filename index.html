@@ -74,7 +74,6 @@
 <body>
 
   <div class="button-container">
-
     <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1QDOae3XsO1-Q26TJV-SLDYShMSmb18M2C7L0NxOl7sc/edit?usp=sharing')">
       김민주 선생님 출석부
     </button>
@@ -102,8 +101,6 @@
     <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1zIyzD-YbMRO3BnS4eIBFA_fTvzvJH694KeJ0Jx5IzYg/edit?usp=sharing')">
       현미진 선생님 출석부
     </button>
-
-    
   </div>
 
   <div id="overlay">
@@ -112,31 +109,14 @@
   </div>
 
   <script>
-    // 새 탭에서만 실행되도록 제한하는 함수
-    function checkIfOpenedInNewTab() {
-      // 새 창 또는 새 탭이면 허용
-      if (window.opener === null && window.innerWidth === screen.width) {
-        return true;
-      } else {
-        // 기존 창에서 실행되었을 경우 차단 메시지 표시
-        document.body.innerHTML = "<h2 style='color: red; text-align: center;'>🚫 접근이 제한되었습니다.</h2><p style='text-align: center;'>바른 경로에서 실행해주세요.</p>";
-        return false;
-      }
-    }
-
     function openOverlay(sheetUrl) {
-      if (checkIfOpenedInNewTab()) {
-        document.getElementById("sheetFrame").src = sheetUrl;
-        document.getElementById("overlay").style.display = "flex";
-      }
+      document.getElementById("sheetFrame").src = sheetUrl;
+      document.getElementById("overlay").style.display = "flex";
     }
 
     function closeOverlay() {
       document.getElementById("overlay").style.display = "none";
     }
-
-    // 페이지가 로드될 때 새 탭에서 실행되었는지 확인
-    window.onload = checkIfOpenedInNewTab;
   </script>
 
 </body>
