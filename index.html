@@ -81,6 +81,7 @@
       width: 800px;
       text-align: center;
       border-radius: 10px;
+      position: relative;
     }
     
     #noticeModal .close-btn {
@@ -132,8 +133,8 @@
   </div>
 
   <!-- 공지사항 모달 -->
-  <div id="noticeModal">
-    <div class="modal-content">
+  <div id="noticeModal" onclick="closeNoticeOutside(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
       <button class="close-btn" onclick="closeNotice()">✖</button>
       <h2>📢 알림</h2>
       <p>1. 새로 반이동했던 학생들은 '꼭' 아카에서 담당선생님을 변경해주세요. </p>
@@ -161,6 +162,12 @@
     
     function closeNotice() {
       document.getElementById("noticeModal").style.display = "none";
+    }
+
+    function closeNoticeOutside(event) {
+      if (event.target.id === "noticeModal") {
+        closeNotice();
+      }
     }
 
     function scaleOverlay() {
