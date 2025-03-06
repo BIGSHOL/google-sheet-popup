@@ -36,7 +36,7 @@
       text-align: center;
     }
 
-    #overlay {
+    #overlay, #noticeModal {
       position: fixed;
       top: 0;
       left: 0;
@@ -47,6 +47,10 @@
       justify-content: center;
       align-items: center;
       z-index: 9999;
+    }
+
+    #overlay {
+      transform: scale(0.9);
     }
 
     iframe {
@@ -69,9 +73,24 @@
       z-index: 10000;
       border-radius: 5px;
     }
+
+    /* 공지사항 스타일 */
+    #noticeModal .modal-content {
+      background: white;
+      padding: 40px;
+      width: 800px;
+      text-align: center;
+      border-radius: 10px;
+    }
+    
+    #noticeModal .close-btn {
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+    }
   </style>
 </head>
-<body>
+<body onload="openNotice()" onclick="scaleOverlay()">
 
   <div class="button-container">
     <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1QDOae3XsO1-Q26TJV-SLDYShMSmb18M2C7L0NxOl7sc/edit?usp=sharing')">
@@ -112,6 +131,20 @@
     <iframe id="sheetFrame"></iframe>
   </div>
 
+  <!-- 공지사항 모달 -->
+  <div id="noticeModal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeNotice()">✖</button>
+      <h2>📢 알림</h2>
+      <p>1. 새로 반이동했던 학생들은 '꼭' 아카에서 담당선생님을 변경해주세요. </p>
+      <p>2-1. 아카에 수업이 1개인데, 출석부에 2개라면 1개밖에 적용되지 않습니다.</p>
+      <p>2-2. 이럴경우, 꼭 수업을 2개로 만들어주세요.</p>
+      <p>2-3. 반대의 경우도 2개의 수업을 하나로 합쳐주세요.</p>
+      <p></p>
+      <p>궁금하거나 불편한점은 언제나 질문해주세요.</p>
+    </div>
+  </div>
+
   <script>
     function openOverlay(sheetUrl) {
       document.getElementById("sheetFrame").src = sheetUrl;
@@ -120,6 +153,18 @@
 
     function closeOverlay() {
       document.getElementById("overlay").style.display = "none";
+    }
+    
+    function openNotice() {
+      document.getElementById("noticeModal").style.display = "flex";
+    }
+    
+    function closeNotice() {
+      document.getElementById("noticeModal").style.display = "none";
+    }
+
+    function scaleOverlay() {
+      document.getElementById("overlay").style.transform = "scale(0.9)";
     }
   </script>
 
