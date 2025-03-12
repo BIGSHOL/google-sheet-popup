@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>인재원 출석부</title>
-  <style>
+     <style>
         body {
             display: flex;
             justify-content: center;
@@ -23,14 +23,25 @@
             font-size: 25px;
             border: none;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 10px;
             width: 290px;
             text-align: center;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            color: black;
+            text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
         }
-        .math { background-color: green; color: black; }
-        .english { background-color: red; color: white; }
-        .korean { background-color: gray; color: black; }
-        .highschool { background-color: black; color: white; }
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        .math { background-color: green; }
+        .english { background-color: red; }
+        .korean { background-color: gray; }
+        .highschool { background-color: black; }
     </style>
 </head>
 <body>
