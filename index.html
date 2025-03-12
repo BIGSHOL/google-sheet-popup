@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버튼 페이지</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(2, 190px);
+            grid-gap: 15px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 190px;
+            text-align: center;
+        }
+        .math { background-color: green; color: black; }
+        .english { background-color: red; color: white; }
+        .korean { background-color: gray; color: black; }
+        .highschool { background-color: black; color: white; }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <button class="math" onclick="location.href='https://bigshol.github.io/google-sheet-popup/math.html'">수학</button>
+        <button class="english" onclick="location.href='english.html'">영어</button>
+        <button class="korean" onclick="location.href='korean.html'">국어</button>
+        <button class="highschool" onclick="location.href='highschool.html'">고등관</button>
+    </div>
+</body>
+</html>
