@@ -146,7 +146,7 @@
       이정아 Julie 선생님 출석부
     </button>
     <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1ThjvOpNIFlyWmijED03e9OgCbfhg0_5AwCBpko9NfAI/edit?usp=sharing)">
-      추민아 선생님 출석부
+      추민아 Jane 선생님 출석부
     </button>
     <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1dVp2HOTn_Pfzbu6-TUX6zw8oZmJPnTLsANwYIXeftWU/edit?usp=sharing)">
       이재성 선생님 출석부
