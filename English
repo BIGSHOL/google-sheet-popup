@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>영어과 출석부</title>
+   <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* 스크롤 방지 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: #f4f4f4;
+    }
+    
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .open-btn {
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #0078D4;
+      color: white;
+      border: 2px solid black;
+      cursor: pointer;
+      border-radius: 10px;
+      width: 250px;
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .open-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .open-btn:active {
+      transform: scale(0.95);
+    }
+
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    iframe {
+      width: 100vw;
+      height: 100vh;
+      border: none;
+      background: white;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: white;
+      color: black;
+      border: none;
+      font-size: 24px;
+      padding: 8px 12px;
+      cursor: pointer;
+      z-index: 10000;
+      border-radius: 5px;
+    }
+
+  /* 공지사항 모달 스타일 */
+#noticeModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+#noticeModal .modal-content {
+  background: white;
+  padding: 40px;
+  width: 800px;
+  max-width: 90vw; /* 화면이 작아도 잘 맞도록 조절 */
+  max-height: 80vh; /* 너무 커지지 않도록 */
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#noticeModal .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body onload="openNotice()">
+
+  <div class="button-container">
+    <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1dVp2HOTn_Pfzbu6-TUX6zw8oZmJPnTLsANwYIXeftWU/edit?usp=sharing)">
+      강보경 Sarah 선생님 출석부
+    </button>
+    <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1dVp2HOTn_Pfzbu6-TUX6zw8oZmJPnTLsANwYIXeftWU/edit?usp=sharing)">
+      박나연 Jenny 선생님 출석부
+    </button>
+    <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1dVp2HOTn_Pfzbu6-TUX6zw8oZmJPnTLsANwYIXeftWU/edit?usp=sharing)">
+      신명진 GINA 선생님 출석부
+    </button>
+    <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1dVp2HOTn_Pfzbu6-TUX6zw8oZmJPnTLsANwYIXeftWU/edit?usp=sharing)">
+      이민아 Mina 선생님 출석부
+    </button>
+    <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1dVp2HOTn_Pfzbu6-TUX6zw8oZmJPnTLsANwYIXeftWU/edit?usp=sharing)">
+      이정아 Julie 선생님 출석부
+    </button>
+    <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1dVp2HOTn_Pfzbu6-TUX6zw8oZmJPnTLsANwYIXeftWU/edit?usp=sharing)">
+      추민아 선생님 출석부
+    </button>
+    <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1dVp2HOTn_Pfzbu6-TUX6zw8oZmJPnTLsANwYIXeftWU/edit?usp=sharing)">
+      이재성 선생님 출석부
+    </button>
+  </div>
+
+  <div id="overlay">
+    <button class="close-btn" onclick="closeOverlay()">✖</button>
+    <iframe id="sheetFrame"></iframe>
+  </div>
+
+  <!-- 공지사항 모달 -->
+  <div id="noticeModal" onclick="closeNoticeOutside(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="close-btn" onclick="closeNotice()">✖</button>
+      <h2>📢 알림</h2>
+      <p>1. 새로 반이동했던 학생들은 '꼭' 아카에서 담당선생님을 변경해주세요. </p>
+      <p>2. 출석부 수업 개수만큼 아카에 수업을 등록해주세요. </p>
+      <p></p>
+      <p>업데이트사항 : 발행예정금액이 추가되었습니다. </p>
+      <p>B1셀을 참조하여 요일을 계산하여 회당단가를 곱해 나타냅니다. </p>
+      <p>다음달 수강료 발행에 참고하시면 좋을 것 같습니다. </p>
+      <p></p>
+      <p>궁금하거나 불편한점은 언제나 질문해주세요. (2층 박T)</p>
+    </div>
+  </div>
+
+  <script>
+    function openOverlay(sheetUrl) {
+      document.getElementById("sheetFrame").src = sheetUrl;
+      document.getElementById("overlay").style.display = "flex";
+    }
+
+    function closeOverlay() {
+      document.getElementById("overlay").style.display = "none";
+    }
+    
+    function openNotice() {
+      document.getElementById("noticeModal").style.display = "flex";
+    }
+    
+    function closeNotice() {
+      document.getElementById("noticeModal").style.display = "none";
+    }
+
+    function closeNoticeOutside(event) {
+      if (event.target.id === "noticeModal") {
+        closeNotice();
+      }
+    }
+  </script>
+
+</body>
+</html>
