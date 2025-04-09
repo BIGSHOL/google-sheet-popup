@@ -136,7 +136,7 @@
     <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1dVp2HOTn_Pfzbu6-TUX6zw8oZmJPnTLsANwYIXeftWU/edit?usp=sharing)">
       박나연 Jenny 선생님 출석부
     </button>
-    <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1dVp2HOTn_Pfzbu6-TUX6zw8oZmJPnTLsANwYIXeftWU/edit?usp=sharing)">
+    <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1qxufOEMmUXF2WZXiD9rfGPMtvPoq2VizNuKQ0DGHwJA/edit?usp=sharing)">
       신명진 GINA 선생님 출석부
     </button>
     <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/12fx-hNHqIJR06pOMSkUHpcOUxTDt6ytvdIMs41O1_U8/edit?usp=sharing)">
