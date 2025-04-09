@@ -130,7 +130,7 @@
 <body onload="openNotice()">
 
   <div class="button-container">
-    <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1dVp2HOTn_Pfzbu6-TUX6zw8oZmJPnTLsANwYIXeftWU/edit?usp=sharing)">
+    <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1c15axkzs5Q2KHhh9-moZW7Ap_3RWONo9tPObXakWBYI/edit?usp=sharing)">
       강보경 Sarah 선생님 출석부
     </button>
     <button class="open-btn" onclick="openOverlay('https://docs.google.com/spreadsheets/d/1dVp2HOTn_Pfzbu6-TUX6zw8oZmJPnTLsANwYIXeftWU/edit?usp=sharing)">
